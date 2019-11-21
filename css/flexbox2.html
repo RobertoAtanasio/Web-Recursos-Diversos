@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <style>
+        div {
+            border: solid 3px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div {
+            box-sizing: border-box;
+        }
+
+        .flex-container {
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+
+        /* aplicar sobre o 3 filho */
+        /* tratar o 3 elemento será apresentado dentro do container */
+        /* por padrão as divs no conatiner têm a mesma ordem, 0 */
+        .flex-container div:nth-child(3) {
+            background-color: indianred;
+            order: 1;       
+            order: 0;
+            order: -1;
+            align-self: center;
+            align-self: flex-end;
+            align-self: flex-start;
+            align-self: stretch;
+        }
+
+        .flex-container div {
+            width: 100px;
+            flex-grow: 0;   /* aqui o elemento ocupa apenas o seu espaço definido */
+            flex-grow: 1;   /* aqui o elemento é acrescido de 40px que é os 200px / 4. Cada elemento 
+                               terá 150px originalmente. Esses número equivalem ao pesp de cada 
+                               elemento */
+        }
+
+        /* lembre que é o 1o elemento das div, ou seja, a div 1 */
+        .flex-container div:nth-child(1) {
+            flex-grow: 2;   /* neste caso, o peso do 2 elemtno passa a ser 2 e o cálculo será da 
+                               seguinte forma: 1 + 2 + 1 + 1 = 50. 200 / 5 = 40, logo cada elemento
+                               ocupará 140 + 180 + 140 + 140 = 600px de acordo com o peso de cada
+                               elemento */
+        }
+
+        .flex-container {
+            width: 300px;
+            flex-shrink: 1;     /* aqui é o inverso do flex-grow, aqui encolhe */
+        }
+
+        .flex-container div:nth-child(1) {
+            flex-shrink: 5;     /* aqui se usa uma lógica semelhante, apenas que no final os valores
+                                   serão reduzidos em vez de somado. 1 + 5 + 1 + 1 = 8
+                                   200 / 8 = 25. Cada elemento = 150. Subtrai-se de acordo com o
+                                   peso e no final soma-se 50 que é 200 / 4. Então: 
+                                   175 + 75 + 175 + 175 = 600 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+
+</html>

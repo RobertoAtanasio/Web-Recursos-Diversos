@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #01</title>
+    <style>
+        /* https://caniuse.com/#feat=css-grid */
+        
+        html,
+        body {
+            margin: 20px;
+            height: calc(100% - 40px);
+            background-color: lightgray;
+        }
+        
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border: solid 3px dodgerblue;
+            background: #fff;
+        }
+
+        body {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-template-columns: repeat(4, 8.33% 8.33% 8.33%);  /* 3 colunas vezes 4 = 12 colunas*/
+            grid-template-columns: repeat(12, 8.33%);             /* 1 coluna vezes 12 = 12 colunas (100% / 12 = 8.33% */
+            grid-template-columns: repeat(11, 100px) 100px; /* 1 coluna vezes 11 mais 1 coluna (externa ao repeat) */
+            /* minmax(100px, 300px) */      /* a coluna terá um intervalo de no mínimo 100px e máximo 300px */
+            grid-template-columns: 200px 20% 1fr;   /* 1 coluna 200pz, 1 coluna 20% e o resto na 3a coluna */
+            grid-template-columns: 3fr 6fr 3fr;     /* unidade de fragmento para as colunas */
+            grid-template-rows: 50% 25% 12.5% 12.5%;    /* unidade de fragmento para as linhas */
+            grid-template-rows: 100px 1fr;  /* 1a linha 100px, 2a obém o máximo, deixando as demais ocupando 
+                                               o seus tamanhos onde caicam seus conteúdos */
+            grid-template-rows: 100px auto auto auto;  /* 1a linha 100px e as demais ocupam os espaços proporcionais */
+        }
+
+        .d8 {
+            grid-column-start: 2;   /* começa na coluna 2*/
+            grid-column-end: 4;     /* e ocupará até a coluna 4, deslocando os demais elementos */
+            grid-column-end: span 2;  /* começe na coluna 2 e dê um espaço de 2 colunas. Igual ao anterior */
+            grid-row-start: 3;      /* começa na linha 3 e ...*/
+            grid-row-end: 5;        /* terminará na linha 5 */
+            grid-row-end: span 2;   /* começa na linha 3 e ocupará 2 linhas. Igual ao anterior. */
+        }
+
+        /* sobreposição de células */
+        .d10,
+        .d11 {
+            /* podem se sobrepor */
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 5;      /* aqui se sobrepõe */
+            grid-row-end: span 1;   /* mesmo colocando esse, já se sobrepoe */
+        }
+
+        .d10 {
+            z-index: 10;    /* o elemento 10 ficará sobre o 11  */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+    <div class="d4">4</div>
+    <div class="d5">5</div>
+    <div class="d6">6</div>
+    <div class="d7">7</div>
+    <div class="d8">8</div>
+    <div class="d9">9</div>
+    <div class="d10">10</div>
+    <div class="d11">11</div>
+    <div class="d12">12</div>
+</body>
+
+</html>
