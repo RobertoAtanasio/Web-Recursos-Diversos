@@ -2,7 +2,7 @@ function Carro(velocidadeMaxima = 200, delta = 5) {
     // atributo privado
     let velocidadeAtual = 0
 
-    // metodo publico
+    // metodo publico - o this é quem diz que o método é público
     this.acelerar = function () {
         if (velocidadeAtual + delta <= velocidadeMaxima) {
             velocidadeAtual += delta
@@ -17,6 +17,7 @@ function Carro(velocidadeMaxima = 200, delta = 5) {
     }
 }
 
+// const uno = new Carro()      // as duas formas funcionam, com ou sem os ()
 const uno = new Carro
 uno.acelerar()
 console.log(uno.getVelocidadeAtual())

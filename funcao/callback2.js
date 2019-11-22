@@ -10,13 +10,16 @@ for (let i in notas) {
 
 console.log(notasBaixas1)
 
-// Com callback
+// Com callback - a function (nota) retonará true ou false, daí o filter selecionará o elemento
 const notasBaixas2 = notas.filter(function (nota) {
     return nota < 7
 })
 
 console.log(notasBaixas2)
 
-const notasMenorQue7 = nota => nota < 7
-const notasBaixas3 = notas.filter(notasMenorQue7)
+const notasBaixas3 = notas.filter(nota => nota < 7)     // passando uma callback
 console.log(notasBaixas3)
+
+const notasMenorQue7 = nota => nota < 7     // aqui retorna uma function que será a callback
+const notasBaixas4 = notas.filter(notasMenorQue7)
+console.log(notasBaixas4)
